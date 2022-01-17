@@ -1,0 +1,11 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  # list all service (web, server...)
+  server:
+    image: nicolas570/express-docker
+    ports:
+      - 5000:5000
+  mongodb:
+    image: mongo
