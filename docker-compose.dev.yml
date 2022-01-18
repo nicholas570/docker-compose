@@ -1,24 +1,27 @@
-# docker-compose.yml
+# docker-compose.dev.yml
 version: '3'
 
 services:
-  # list all service (web, server...)
+  client:
+    environment:
+      - WDS_SOCKET_PORT=0
+    # build local image rather than pulling it
+    build: ./client
+    # sync port
+    ports:
+      - 8080:3000
+    # link volume
+    volumes:
+      - ./client/src/:/app/src/
   server:
-    # in dev, we use the local image rather than pulling it
     build: ./server
+    # override CMD command in Dockerfile
+    command: npm run dev
     ports:
       - 5000:5000
-    # override the CMD command
-    command: npm run dev
     volumes:
       - ./server/src/:/app/src/
   mongodb:
     image: mongo
     volumes:
       - ./data:/data/db
-  client:
-    build: ./client
-    ports:
-      - 8080:3000
-    volumes:
-      - ./client/src/:/app/src/
