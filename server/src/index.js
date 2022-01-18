@@ -30,7 +30,7 @@ process.on('SIGTERM', () => {
 
   app.get('/', (req, res) => {
     console.log('Got a request');
-    res.json({ message: "Hey, I'm jean, the API" });
+    res.json({ message: "Hey, I'm Apokolips, the vilain API" });
   });
 
   app.post('/', async (req, res) => {
