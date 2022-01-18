@@ -9,6 +9,10 @@ services:
     ports:
       - 5000:5000
     # override the CMD command
-    command: npm run start:dev
+    command: npm run dev
+    volumes:
+      - ./server/src/:/app/src/
   mongodb:
     image: mongo
+    volumes:
+      - ./data:/data/db
