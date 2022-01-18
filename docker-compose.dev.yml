@@ -5,6 +5,7 @@ services:
   client:
     environment:
       - WDS_SOCKET_PORT=0
+      - CHOKIDAR_USEPOLLING=true
     # build local image rather than pulling it
     build: ./client
     # sync port
